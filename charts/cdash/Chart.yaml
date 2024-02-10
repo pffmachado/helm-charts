@@ -1,9 +1,13 @@
 name: cdash
 description: A Helm Chart for CDash
-version: 0.9.0
+version: 0.9.1
 icon: https://www.cdash.org/wp-content/uploads/2019/05/slider-cdash.png
 apiVersion: v2
 keywords:
   - cdash
+home: https://www.cdash.org
 sources:
-home:
+  - https://github.com/Kitware/CDash
+maintainers:
+  - name: Paulo Machado
+    email: pffmachado@gmail.com

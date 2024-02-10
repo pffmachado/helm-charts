@@ -10,9 +10,9 @@ metadata:
   name: database
 spec:
   ports:
-    - name: "5432"
-      port: 5432
-      targetPort: 5432
+    - name: {{ .Values.externalDatabase.port | quote }}
+      port: {{ .Values.externalDatabase.port }}
+      targetPort: {{ .Values.externalDatabase.port }}
   selector:
     io.kompose.service: database
 status:

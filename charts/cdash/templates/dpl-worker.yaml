@@ -28,15 +28,15 @@ spec:
       containers:
         - env:
             - name: APP_KEY
-              value: DV5SQLqXCbpnme4z2pKNujd6gFW9hrj5
+              value: {{ .Values.applicationKey }}
             - name: DB_CONNECTION
-              value: pgsql
+              value: {{ .Values.externalDatabase.connection }}
             - name: DB_HOST
-              value: database
+              value: {{ .Values.externalDatabase.host }}
             - name: DB_LOGIN
-              value: postgres
+              value: {{ .Values.externalDatabase.login }}
             - name: DB_PORT
-              value: "5432"
+              value: {{ .Values.externalDatabase.port | quote }}
           image: pffmachado/cdash-worker
           name: cdash-worker
           resources: {}

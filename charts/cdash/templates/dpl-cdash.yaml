@@ -28,36 +28,37 @@ spec:
       containers:
         - env:
             - name: ADMIN_INSTITUTION
-              value: "cdash"
+              value: {{ .Values.adminInstitution | quote }}
             - name: ADMIN_PASSWORD
-              value: "password"
+              value: {{ .Values.adminPassword }}
+            - name: APP_KEY
+              value: {{ .Values.applicationKey }}
+            - name: APP_URL
+              value: {{ .Values.applicationUrl }}
+            - name: DB_CONNECTION
+              value: {{ .Values.externalDatabase.connection }}
+            - name: DB_DATABASE
+              value: {{ .Values.externalDatabase.database }}
+            - name: DB_HOST
+              value: {{ .Values.externalDatabase.host }}
+            - name: DB_LOGIN
+              value: {{ .Values.externalDatabase.login }}
+            - name: DB_PASSWORD
+              value: {{ .Values.externalDatabase.password }}
+            - name: DB_PORT
+              value: {{ .Values.externalDatabase.port | quote }}
+            - name: MIX_APP_URL
+              value: {{ .Values.applicationUrl }}
+            - name: QUEUE_CONNECTION
+              value: {{ .Values.externalDatabase.host }}
+            - name: APP_NAME
+              value: CDash
             - name: APP_DEBUG
               value: "false"
             - name: APP_ENV
               value: production
-            - name: APP_KEY
-              value: DV5SQLqXCbpnme4z2pKNujd6gFW9hrj5
-            - name: APP_NAME
-              value: CDash
-            - name: APP_URL
-              value: https://cdash.apps.daq.hbm.com
-            - name: DB_CONNECTION
-              value: pgsql
-            - name: DB_DATABASE
-              value: cdash
-            - name: DB_HOST
-              value: database
-            - name: DB_LOGIN
-              value: postgres
-            - name: DB_PASSWORD
-              value: secret
-            - name: DB_PORT
-              value: "5432"
-            - name: MIX_APP_URL
-              value: https://cdash.apps.daq.hbm.com
-            - name: QUEUE_CONNECTION
-              value: database
-          image: pffmachado/cdash
+
+          image: "{{ .Values.image.repository }}:{{ .Values.image.version }}"
           livenessProbe:
             exec:
               command:

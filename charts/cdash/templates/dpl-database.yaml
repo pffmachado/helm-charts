@@ -28,9 +28,9 @@ spec:
       containers:
         - env:
             - name: POSTGRES_DB
-              value: cdash
+              value: {{ .Values.externalDatabase.host }}
             - name: POSTGRES_PASSWORD
-              value: secret
+              value: {{ .Values.externalDatabase.password }}
           image: postgres
           livenessProbe:
             exec:
@@ -40,8 +40,8 @@ spec:
             periodSeconds: 1
           name: cdash-postgres
           ports:
-            - containerPort: 5432
-              hostPort: 5432
+            - containerPort: {{ .Values.externalDatabase.port }}
+              hostPort: {{ .Values.externalDatabase.port }}
               protocol: TCP
           resources: {}
           volumeMounts:
