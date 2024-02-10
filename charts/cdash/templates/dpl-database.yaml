@@ -28,7 +28,7 @@ spec:
       containers:
         - env:
             - name: POSTGRES_DB
-              value: {{ .Values.externalDatabase.host }}
+              value: {{ .Values.externalDatabase.database }}
             - name: POSTGRES_PASSWORD
               value: {{ .Values.externalDatabase.password }}
           image: postgres
