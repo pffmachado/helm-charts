@@ -57,7 +57,30 @@ spec:
               value: "false"
             - name: APP_ENV
               value: production
-
+        {{- if .Values.ldap.enabled }}
+            - name: CDASH_AUTHENTICATION_PROVIDER
+              value: ldap
+            - name: USERNAME_PASSWORD_AUTHENTICATION_ENABLED
+              value: true
+            - name: USER_REGISTRATION_FORM_ENABLED
+              value: false
+            - name: LDAP_HOSTS
+              value: {{ .Values.ldap.hosts }}
+            - name: LDAP_BASE_DN
+              value: {{ .Values.ldap.basedn }}
+            - name: LDAP_USERNAME
+              value: {{ .Values.ldap.username }}
+            - name: LDAP_PASSWORD
+              value: {{ .Values.ldap.password }}
+            - name: LDAP_PROVIDER
+              value: {{ .Values.ldap.provider }}
+            - name: LDAP_LOGGING
+              value: {{ .Values.ldap.logging }}
+            - name: LDAP_PROVIDER
+              value: {{ .Values.ldap.provider }}
+            - name: LDAP_GUID
+              value: {{ .Values.ldap.guid }}
+        {{- end}}
           image: "{{ .Values.image.repository }}:{{ .Values.image.version }}"
           livenessProbe:
             exec:
