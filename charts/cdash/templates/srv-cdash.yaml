@@ -1,0 +1,19 @@
+apiVersion: v1
+kind: Service
+metadata:
+  annotations:
+    kompose.cmd: kompose convert -c -f cdash.yml
+    kompose.version: 1.31.2 (HEAD)
+  creationTimestamp: null
+  labels:
+    io.kompose.service: cdash
+  name: cdash
+spec:
+  ports:
+    - name: "443"
+      port: 443
+      targetPort: 443
+  selector:
+    io.kompose.service: cdash
+status:
+  loadBalancer: {}

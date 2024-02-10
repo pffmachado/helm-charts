@@ -1,0 +1,82 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  annotations:
+    kompose.cmd: kompose convert -c -f cdash.yml
+    kompose.version: 1.31.2 (HEAD)
+  creationTimestamp: null
+  labels:
+    io.kompose.service: cdash
+  name: cdash
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      io.kompose.service: cdash
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      annotations:
+        kompose.cmd: kompose convert -c -f cdash.yml
+        kompose.version: 1.31.2 (HEAD)
+      creationTimestamp: null
+      labels:
+        io.kompose.network/docker-default: "true"
+        io.kompose.service: cdash
+    spec:
+      containers:
+        - env:
+            - name: ADMIN_INSTITUTION
+              value: "cdash"
+            - name: ADMIN_PASSWORD
+              value: "password"
+            - name: APP_DEBUG
+              value: "false"
+            - name: APP_ENV
+              value: production
+            - name: APP_KEY
+              value: DV5SQLqXCbpnme4z2pKNujd6gFW9hrj5
+            - name: APP_NAME
+              value: CDash
+            - name: APP_URL
+              value: https://cdash.apps.daq.hbm.com
+            - name: DB_CONNECTION
+              value: pgsql
+            - name: DB_DATABASE
+              value: cdash
+            - name: DB_HOST
+              value: database
+            - name: DB_LOGIN
+              value: postgres
+            - name: DB_PASSWORD
+              value: secret
+            - name: DB_PORT
+              value: "5432"
+            - name: MIX_APP_URL
+              value: https://cdash.apps.daq.hbm.com
+            - name: QUEUE_CONNECTION
+              value: database
+          image: pffmachado/cdash
+          livenessProbe:
+            exec:
+              command:
+                - ps aux | grep apache2 | grep -v grep > /dev/null
+            failureThreshold: 20
+            periodSeconds: 5
+            timeoutSeconds: 10
+          name: cdash
+          ports:
+            - containerPort: 443
+              hostPort: 443
+              protocol: TCP
+          resources: {}
+          volumeMounts:
+            - mountPath: /var/lib/cdash
+              name: storage
+      restartPolicy: Always
+      volumes:
+        - name: storage
+          persistentVolumeClaim:
+            claimName: storage
+status: {}

@@ -1,0 +1,51 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  annotations:
+    kompose.cmd: kompose convert -c -f cdash.yml
+    kompose.version: 1.31.2 (HEAD)
+  creationTimestamp: null
+  labels:
+    io.kompose.service: worker
+  name: worker
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      io.kompose.service: worker
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      annotations:
+        kompose.cmd: kompose convert -c -f cdash.yml
+        kompose.version: 1.31.2 (HEAD)
+      creationTimestamp: null
+      labels:
+        io.kompose.network/docker-default: "true"
+        io.kompose.service: worker
+    spec:
+      containers:
+        - env:
+            - name: APP_KEY
+              value: DV5SQLqXCbpnme4z2pKNujd6gFW9hrj5
+            - name: DB_CONNECTION
+              value: pgsql
+            - name: DB_HOST
+              value: database
+            - name: DB_LOGIN
+              value: postgres
+            - name: DB_PORT
+              value: "5432"
+          image: pffmachado/cdash-worker
+          name: cdash-worker
+          resources: {}
+          volumeMounts:
+            - mountPath: /var/lib/cdash
+              name: storage
+      restartPolicy: Always
+      volumes:
+        - name: storage
+          persistentVolumeClaim:
+            claimName: storage
+status: {}

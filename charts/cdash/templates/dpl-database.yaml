@@ -1,0 +1,55 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  annotations:
+    kompose.cmd: kompose convert -c -f cdash.yml
+    kompose.version: 1.31.2 (HEAD)
+  creationTimestamp: null
+  labels:
+    io.kompose.service: database
+  name: database
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      io.kompose.service: database
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      annotations:
+        kompose.cmd: kompose convert -c -f cdash.yml
+        kompose.version: 1.31.2 (HEAD)
+      creationTimestamp: null
+      labels:
+        io.kompose.network/docker-default: "true"
+        io.kompose.service: database
+    spec:
+      containers:
+        - env:
+            - name: POSTGRES_DB
+              value: cdash
+            - name: POSTGRES_PASSWORD
+              value: secret
+          image: postgres
+          livenessProbe:
+            exec:
+              command:
+                - pg_isready -U postgres
+            failureThreshold: 120
+            periodSeconds: 1
+          name: cdash-postgres
+          ports:
+            - containerPort: 5432
+              hostPort: 5432
+              protocol: TCP
+          resources: {}
+          volumeMounts:
+            - mountPath: /var/lib/postgresql
+              name: postgresqldata
+      restartPolicy: Always
+      volumes:
+        - name: postgresqldata
+          persistentVolumeClaim:
+            claimName: postgresqldata
+status: {}
