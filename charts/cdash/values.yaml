@@ -2,7 +2,7 @@ replicaCount: 1
 
 image:
   repository: pffmachado/cdash
-  version: 3.3.5
+  version: 3.3.6
   pullPolicy: IfNotPresent
 
 imagePullSecrets: []
