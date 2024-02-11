@@ -28,7 +28,7 @@ spec:
       containers:
         - env:
             - name: QUEUE_CONNECTION
-              value: sync
+              value: database
             - name: REMOTE_WORKERS
               value: "true"
             - name: APP_KEY
@@ -39,6 +39,8 @@ spec:
               value: {{ .Values.externalDatabase.host }}
             - name: DB_LOGIN
               value: {{ .Values.externalDatabase.login }}
+            - name: DB_PASSWORD
+              value: {{ .Values.externalDatabase.password }}
             - name: DB_PORT
               value: {{ .Values.externalDatabase.port | quote }}
           image: "{{ .Values.image.repository }}-worker:{{ .Values.image.version }}"

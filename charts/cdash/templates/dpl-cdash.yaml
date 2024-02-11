@@ -50,7 +50,7 @@ spec:
             - name: MIX_APP_URL
               value: {{ .Values.applicationUrl }}
             - name: QUEUE_CONNECTION
-              value: sync
+              value: database
             - name: REMOTE_WORKERS
               value: "true"
             - name: APP_NAME
