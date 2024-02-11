@@ -3,14 +3,14 @@ kind: Service
 metadata:
   creationTimestamp: null
   labels:
-    io.kompose.service: cdash-worker
-  name: cdash-worker
+    io.kompose.service: worker
+  name: worker
 spec:
   ports:
     - name: "443"
       port: 443
       targetPort: 443
   selector:
-    io.kompose.service: cdash-worker
+    io.kompose.service: worker
 status:
   loadBalancer: {}
