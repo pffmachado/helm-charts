@@ -30,7 +30,7 @@ spec:
             - name: QUEUE_CONNECTION
               value: database
             - name: REMOTE_WORKERS
-              value: "true"
+              value: "false"
             - name: APP_KEY
               value: {{ .Values.applicationKey }}
             - name: DB_CONNECTION
