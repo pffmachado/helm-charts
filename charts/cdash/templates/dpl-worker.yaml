@@ -27,6 +27,10 @@ spec:
     spec:
       containers:
         - env:
+            - name: QUEUE_CONNECTION
+              value: {{ .Values.externalDatabase.host }}
+            - name: REMOTE_WORKERS
+              value: "true"
             - name: APP_KEY
               value: {{ .Values.applicationKey }}
             - name: DB_CONNECTION
