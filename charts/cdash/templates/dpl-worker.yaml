@@ -27,14 +27,12 @@ spec:
     spec:
       containers:
         - env:
-            - name: QUEUE_CONNECTION
-              value: database
-            - name: REMOTE_WORKERS
-              value: "false"
             - name: APP_KEY
               value: {{ .Values.applicationKey }}
             - name: DB_CONNECTION
               value: {{ .Values.externalDatabase.connection }}
+            - name: DB_DATABASE
+              value: {{ .Values.externalDatabase.database }}
             - name: DB_HOST
               value: {{ .Values.externalDatabase.host }}
             - name: DB_LOGIN
@@ -43,6 +41,10 @@ spec:
               value: {{ .Values.externalDatabase.password }}
             - name: DB_PORT
               value: {{ .Values.externalDatabase.port | quote }}
+            - name: QUEUE_CONNECTION
+              value: database
+            - name: REMOTE_WORKERS
+              value: "false"
           image: "{{ .Values.image.repository }}-worker:{{ .Values.image.version }}"
           name: cdash-worker
           resources: {}

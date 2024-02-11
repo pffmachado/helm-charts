@@ -31,10 +31,10 @@ spec:
               value: {{ .Values.adminInstitution | quote }}
             - name: ADMIN_PASSWORD
               value: {{ .Values.adminPassword }}
-            - name: APP_KEY
-              value: {{ .Values.applicationKey }}
             - name: APP_URL
               value: {{ .Values.applicationUrl }}
+            - name: APP_KEY
+              value: {{ .Values.applicationKey }}
             - name: DB_CONNECTION
               value: {{ .Values.externalDatabase.connection }}
             - name: DB_DATABASE
