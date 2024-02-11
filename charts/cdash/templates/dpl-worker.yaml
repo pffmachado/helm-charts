@@ -37,7 +37,7 @@ spec:
               value: {{ .Values.externalDatabase.login }}
             - name: DB_PORT
               value: {{ .Values.externalDatabase.port | quote }}
-          image: pffmachado/cdash-worker
+          image: "{{ .Values.image.repository }}-worker:{{ .Values.image.version }}"
           name: cdash-worker
           resources: {}
           volumeMounts:
