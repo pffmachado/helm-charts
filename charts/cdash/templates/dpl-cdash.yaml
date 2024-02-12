@@ -98,15 +98,14 @@ spec:
               protocol: TCP
           resources: {}
           volumeMounts:
-          - name: cdash-my-cert-pem
-            mountPath: "/var/www/my-cert.pem"
-            subPath: my-cert.pem
-            readOnly: false
-          - name: cdash-my-cert-key
-            mountPath: "/var/www/my-cert.key"
-            subPath: my-cert.key
-            readOnly: false
-          volumeMounts:
+            - name: cdash-my-cert-pem
+              mountPath: "/var/www/my-cert.pem"
+              subPath: my-cert.pem
+              readOnly: false
+            - name: cdash-my-cert-key
+              mountPath: "/var/www/my-cert.key"
+              subPath: my-cert.key
+              readOnly: false
             - mountPath: /var/lib/cdash
               name: cdashdata
       restartPolicy: Always
