@@ -35,8 +35,8 @@ spec:
               value: {{ .Values.externalDatabase.database }}
             - name: DB_HOST
               value: {{ .Values.externalDatabase.host }}
-            - name: DB_LOGIN
-              value: {{ .Values.externalDatabase.login }}
+            - name: DB_USERNAME
+              value: {{ .Values.externalDatabase.username }}
             - name: DB_PASSWORD
               value: {{ .Values.externalDatabase.password }}
             - name: DB_PORT

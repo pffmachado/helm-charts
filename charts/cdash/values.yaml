@@ -48,7 +48,7 @@ externalDatabase:
   connection: pgsql
   database: cdash
   host: database
-  login: postegres
+  username: postgres
   password: secret
   port: 5432
 
