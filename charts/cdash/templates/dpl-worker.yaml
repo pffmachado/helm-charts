@@ -65,6 +65,10 @@ spec:
               readOnly: false
             - mountPath: /var/lib/cdash
               name: cdashdata
+          lifecycle:
+            postStart:
+              exec:
+                command: ["/bin/sh", "-c", "php artisan storage:mkdirs"]
       restartPolicy: Always
       volumes:
         - name: cdashdata
