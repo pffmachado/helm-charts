@@ -46,7 +46,7 @@ spec:
             - name: DB_PORT
               value: {{ .Values.externalDatabase.port | quote }}
             - name: QUEUE_CONNECTION
-              value: database
+              value: {{ .Values.worker.connection }}
             - name: REMOTE_WORKERS
               value: {{ .Values.worker.remote }}
           image: "{{ .Values.image.repository }}-worker:{{ .Values.image.version }}"

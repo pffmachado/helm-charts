@@ -54,6 +54,7 @@ externalDatabase:
   port: 5432
 
 worker: 
+  connection: database
   remote: true
   applicationUrl: http://cdash
 

@@ -52,12 +52,11 @@ spec:
             - name: MIX_APP_URL
               value: {{ .Values.applicationUrl }}
             - name: QUEUE_CONNECTION
-              value: database
+              value: {{ .Values.worker.connection }}
             - name: REMOTE_WORKERS
               value: {{ .Values.worker.remote }}
             - name: APP_NAME
               value: CDash
-              value: {{ .Values.applicationUrl }}
             - name: APP_ENV
               value: production
         {{- if .Values.ldap.enabled }}
