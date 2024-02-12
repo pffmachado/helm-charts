@@ -108,6 +108,10 @@ spec:
               readOnly: false
             - mountPath: /var/lib/cdash
               name: cdashdata
+          lifecycle:
+            postStart:
+              exec:
+                command: ["/bin/sh", "-c", "php artisan user:save --email=admin@cdash --password=${ADMIN_PASSWORD} --firstname=admin --lastname=cdash --institution=${ADMIN_INSTITUTION} --admin=1"]
       restartPolicy: Always
       volumes:
         - name: cdashdata
