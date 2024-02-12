@@ -27,6 +27,8 @@ spec:
     spec:
       containers:
         - env:
+            - name: APP_DEBUG
+              value: {{ .Values.debug }}
             - name: APP_KEY
               value: {{ .Values.applicationKey }}
             - name: DB_CONNECTION
@@ -44,7 +46,7 @@ spec:
             - name: QUEUE_CONNECTION
               value: database
             - name: REMOTE_WORKERS
-              value: "true"
+              value: {{ .Values.worker.remote }}
           image: "{{ .Values.image.repository }}-worker:{{ .Values.image.version }}"
           name: cdash-worker
           resources: {}
