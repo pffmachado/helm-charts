@@ -56,7 +56,7 @@ externalDatabase:
 worker: 
   connection: database
   remote: true
-  applicationUrl: http://cdash
+  applicationUrl: http://cdash:443
 
 
 ldap:
