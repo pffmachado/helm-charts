@@ -50,7 +50,7 @@ spec:
             - name: REMOTE_WORKERS
               value: {{ .Values.worker.remote | quote }}
             - name: FILESYSTEM_DRIVER
-              value: public
+              value: local
           image: "{{ .Values.image.repository }}-worker:{{ .Values.image.version }}"
           name: cdash-worker
           resources: {}
