@@ -54,5 +54,14 @@ spec:
           image: "{{ .Values.image.repository }}-worker:{{ .Values.image.version }}"
           name: cdash-worker
           resources: {}
+          volumeMounts:
+          - name: cdash-my-cert
+            mountPath: "/var/www/"
+            readOnly: true
       restartPolicy: Always
+      volumes:
+        - name: cdash-my-cert
+          secret:
+            secretName: my-cert
+
 status: {}
