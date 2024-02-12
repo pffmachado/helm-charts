@@ -53,6 +53,11 @@ externalDatabase:
   password: secret
   port: 5432
 
+worker: 
+  remote: true
+  applicationUrl: http://cdash
+
+
 ldap:
   enabled: false
   hosts: localhost
