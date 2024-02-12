@@ -52,11 +52,12 @@ spec:
             - name: QUEUE_CONNECTION
               value: database
             - name: REMOTE_WORKERS
-              value: {{ .Values.worker.remote }}
+              value: "true"
             - name: APP_NAME
               value: CDash
             - name: APP_DEBUG
-              value: {{ .Values.debug }}
+              value: "true"
+              value: {{ .Values.applicationUrl }}
             - name: APP_ENV
               value: production
         {{- if .Values.ldap.enabled }}

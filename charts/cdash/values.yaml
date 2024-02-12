@@ -31,7 +31,6 @@ securityContext:
   # runAsNonRoot: true
   # runAsUser: 1000
 
-debug: "true"
 
 # Application Institution
 adminInstitution: cdash
@@ -53,9 +52,6 @@ externalDatabase:
   username: postgres
   password: secret
   port: 5432
-
-worker:
-  remote: "true"
 
 ldap:
   enabled: false
