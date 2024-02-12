@@ -98,6 +98,10 @@ spec:
               protocol: TCP
           resources: {}
           volumeMounts:
+          - name: cdash-my-cert
+            mountPath: "/var/www/"
+            readOnly: true
+          volumeMounts:
             - mountPath: /var/lib/cdash
               name: cdashdata
       restartPolicy: Always
@@ -105,4 +109,7 @@ spec:
         - name: cdashdata
           persistentVolumeClaim:
             claimName: cdashdata
+        - name: cdash-my-cert
+          secret:
+            secretName: my-cert
 status: {}

@@ -1,8 +1,8 @@
 replicaCount: 1
 
 image:
-  repository: pffmachado/cdash
-  version: 3.3.6
+  repository: kitware/cdash
+  version: 3.2.2
   pullPolicy: IfNotPresent
 
 imagePullSecrets: []
