@@ -52,7 +52,7 @@ spec:
             - name: QUEUE_CONNECTION
               value: database
             - name: REMOTE_WORKERS
-              value: "false"
+              value: "true"
             - name: APP_NAME
               value: CDash
             - name: APP_DEBUG
