@@ -98,9 +98,14 @@ spec:
               protocol: TCP
           resources: {}
           volumeMounts:
-          - name: cdash-my-cert
-            mountPath: "/var/www/"
-            readOnly: true
+          - name: cdash-my-cert-pem
+            mountPath: "/var/www/my-cert.pem"
+            subPath: my-cert.pem
+            readOnly: false
+          - name: cdash-my-cert-key
+            mountPath: "/var/www/my-cert.key"
+            subPath: my-cert.key
+            readOnly: false
           volumeMounts:
             - mountPath: /var/lib/cdash
               name: cdashdata
@@ -109,7 +114,11 @@ spec:
         - name: cdashdata
           persistentVolumeClaim:
             claimName: cdashdata
-        - name: cdash-my-cert
-          secret:
-            secretName: my-cert
+        - name: cdash-my-cert-pem
+          configMap:
+            name: my-cert.pem
+        - name: cdash-my-cert-key
+          configMap:
+            name: my-cert.key
+
 status: {}

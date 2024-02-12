@@ -2,7 +2,7 @@ replicaCount: 1
 
 image:
   repository: kitware/cdash
-  version: v3.2.2
+  version: v3.3.0-rc2
   pullPolicy: IfNotPresent
 
 imagePullSecrets: []
