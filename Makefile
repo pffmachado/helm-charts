@@ -42,6 +42,26 @@ index:  package ## Generate Index
 		sed -i "s/__version__/$${CHART_NAME}/g" $(CHARTS_DESTINATION)/index.yaml ;\
 	done
 	@cp $(CHARTS_DESTINATION)/index.yaml index.yaml
+.PHONY: index
+
+template: ## Template Helm Chart
+	@echo "=> Template"
+	@mkdir -p $(CHARTS_DESTINATION)
+	@for chart in $(CHARTS); do \
+		echo "template $$chart ..."; \
+		CHART_NAME=`basename $$chart`; \
+		helm template $$CHART_NAME $$chart ; \
+	done
+
+install: ## Dry-run Install Helm Chart
+	@echo "=> Install"
+	@mkdir -p $(CHARTS_DESTINATION)
+	@for chart in $(CHARTS); do \
+		echo "dry-run $$chart ..."; \
+		CHART_NAME=`basename $$chart`; \
+		helm install --dry-run --debug $$CHART_NAME $$chart ; \
+	done
+
 
 .PHONY: update-deps
 update-deps: ## Update dependencies of the charts

@@ -46,8 +46,18 @@ applicationKey: DV5SQLqXCbpnme4z2pKNujd6gFW9hrj5
 applicationUrl: https://localhost
 
 applicationCrt:
-  pem:
-  key:
+  pem: ""
+    # pem: |
+    #   -----BEGIN CERTIFICATE-----
+    #   ...
+    #   -----END CERTIFICATE-----
+
+
+  key: ""
+    # key: |
+    #   -----BEGIN PRIVATE KEY-----
+    #   ...
+    #   -----END PRIVATE KEY-----
 
 externalDatabase:
   connection: pgsql
