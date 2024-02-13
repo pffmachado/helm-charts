@@ -30,9 +30,9 @@ spec:
             - name: APP_DEBUG
               value: "true"
             - name: APP_URL
-              value: {{ .Values.worker.applicationUrl }}
+              value: "{{ .Values.worker.protocol }}://{{ .Values.application.host }}"
             - name: APP_KEY
-              value: {{ .Values.applicationKey }}
+              value: {{ .Values.application.appkey }}
             - name: DB_CONNECTION
               value: {{ .Values.externalDatabase.connection }}
             - name: DB_DATABASE

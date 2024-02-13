@@ -32,20 +32,14 @@ securityContext:
   # runAsUser: 1000
 
 
-# Application Institution
-adminInstitution: cdash
-
-# Application password
-# Defaults to a random 10-character alphanumeric string if not set
-adminPassword: ""
-
 # Application Key
 # TODO: to be removed
-applicationKey: DV5SQLqXCbpnme4z2pKNujd6gFW9hrj5
-
-applicationUrl: https://localhost
-
-applicationCrt:
+application:
+  institution: cdash
+  password: ""
+  appkey: DV5SQLqXCbpnme4z2pKNujd6gFW9hrj5
+  protocol: https
+  host: localhost
   pem: ""
     # pem: |
     #   -----BEGIN CERTIFICATE-----
@@ -58,6 +52,11 @@ applicationCrt:
     #   -----BEGIN PRIVATE KEY-----
     #   ...
     #   -----END PRIVATE KEY-----
+#
+worker: 
+  connection: database
+  remote: true
+  protocol: http
 
 externalDatabase:
   connection: pgsql
@@ -66,12 +65,6 @@ externalDatabase:
   username: postgres
   password: secret
   port: 5432
-
-worker: 
-  connection: database
-  remote: true
-  applicationUrl: http://cdash
-
 
 ldap:
   enabled: false

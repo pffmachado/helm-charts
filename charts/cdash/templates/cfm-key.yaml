@@ -5,4 +5,4 @@ metadata:
   name: my-cert.key
 data:
   my-cert.key: |
-    {{- .Values.applicationCrt.key | nindent 4 }}
+    {{- .Values.application.key | nindent 4 }}

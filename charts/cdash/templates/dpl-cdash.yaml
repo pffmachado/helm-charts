@@ -27,16 +27,20 @@ spec:
     spec:
       containers:
         - env:
+            - name: APP_NAME
+              value: CDash
+            - name: APP_ENV
+              value: production
             - name: ADMIN_INSTITUTION
-              value: {{ .Values.adminInstitution | quote }}
+              value: {{ .Values.application.institution | quote }}
             - name: ADMIN_PASSWORD
-              value: {{ .Values.adminPassword }}
+              value: {{ .Values.application.password }}
             - name: APP_DEBUG
               value: "true"
             - name: APP_URL
-              value: {{ .Values.applicationUrl }}
+              value: "{{ .Values.application.protocol }}://{{ .Values.application.host }}"
             - name: APP_KEY
-              value: {{ .Values.applicationKey }}
+              value: {{ .Values.application.appkey }}
             - name: DB_CONNECTION
               value: {{ .Values.externalDatabase.connection }}
             - name: DB_DATABASE
@@ -50,15 +54,11 @@ spec:
             - name: DB_PORT
               value: {{ .Values.externalDatabase.port | quote }}
             - name: MIX_APP_URL
-              value: {{ .Values.applicationUrl }}
+              value: "{{ .Values.application.protocol }}://{{ .Values.application.host }}"
             - name: QUEUE_CONNECTION
               value: {{ .Values.worker.connection }}
             - name: REMOTE_WORKERS
               value: {{ .Values.worker.remote | quote }}
-            - name: APP_NAME
-              value: CDash
-            - name: APP_ENV
-              value: production
         {{- if .Values.ldap.enabled }}
             - name: CDASH_AUTHENTICATION_PROVIDER
               value: ldap

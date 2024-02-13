@@ -5,4 +5,4 @@ metadata:
   name: my-cert.pem
 data:
   my-cert.pem: |
-    {{- .Values.applicationCrt.pem | nindent 4 }}
+    {{- .Values.application.pem | nindent 4 }}
