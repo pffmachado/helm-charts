@@ -6,7 +6,7 @@ metadata:
 spec:
   ingressClassName: traefik
   rules:
-    - host: {{ .Values.applicationHost }}
+    - host: {{ .Values.application.host }}
       http:
         paths:
           - backend:
