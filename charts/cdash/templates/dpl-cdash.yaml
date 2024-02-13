@@ -80,7 +80,7 @@ spec:
               value: {{ .Values.ldap.logging }}
             - name: LDAP_PROVIDER
               value: {{ .Values.ldap.provider }}
-            - name: LDAP_GUID
+            - name: LDAP_FILTERS_ON
               value: {{ .Values.ldap.guid }}
         {{- end}}
           image: "{{ .Values.image.repository }}:{{ .Values.image.version }}"
