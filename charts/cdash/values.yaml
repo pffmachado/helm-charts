@@ -45,6 +45,10 @@ applicationKey: DV5SQLqXCbpnme4z2pKNujd6gFW9hrj5
 
 applicationUrl: https://localhost
 
+applicationCrt:
+  pem:
+  key:
+
 externalDatabase:
   connection: pgsql
   database: cdash
