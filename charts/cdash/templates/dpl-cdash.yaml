@@ -81,7 +81,7 @@ spec:
             - name: LDAP_PROVIDER
               value: {{ .Values.ldap.provider }}
             - name: LDAP_TIMEOUT
-              value: {{ .Values.ldap.timeout }}
+              value: {{ .Values.ldap.timeout | quote }}
         {{- end}}
           image: "{{ .Values.image.repository }}:{{ .Values.image.version }}"
           livenessProbe:
