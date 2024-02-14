@@ -2,6 +2,23 @@ apiVersion: v1
 entries:
   cdash:
   - apiVersion: v2
+    created: "2024-02-14T00:06:40.733495451Z"
+    description: A Helm Chart for CDash
+    digest: cea3943f65915d40a6e7a3a0f59179e4b276c79069f0464aa17dca689b87b1ef
+    home: https://www.cdash.org
+    icon: https://www.cdash.org/wp-content/uploads/2019/05/slider-cdash.png
+    keywords:
+    - cdash
+    maintainers:
+    - email: pffmachado@gmail.com
+      name: Paulo Machado
+    name: cdash
+    sources:
+    - https://github.com/Kitware/CDash
+    urls:
+    - https://github.com/pffmachado/helm-charts/releases/download/cdash-0.9.36/cdash-0.9.36.tgz
+    version: 0.9.36
+  - apiVersion: v2
     created: "2024-02-13T23:44:58.628388484Z"
     description: A Helm Chart for CDash
     digest: de895dcc52696e1f573286cc966e01c405aa3b38c55f1cff36835a67dab859b0
@@ -607,4 +624,4 @@ entries:
     urls:
     - https://github.com/pffmachado/helm-charts/releases/download/cdash-0.9.0/cdash-0.9.0.tgz
     version: 0.9.0
-generated: "2024-02-13T23:44:58.628666697Z"
+generated: "2024-02-14T00:06:40.733740508Z"
