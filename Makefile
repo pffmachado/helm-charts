@@ -62,6 +62,13 @@ install: ## Dry-run Install Helm Chart
 		helm install --dry-run --debug -n $$CHART_NAME $$CHART_NAME $$chart ; \
 	done
 
+key: ## Generate Self-Signed Certificate
+	@echo "=> Generate Certifacte"
+	@mkdir -p $(CHARTS_DESTINATION)
+	openssl req -x509 -newkey rsa:4096 \
+		-keyout $(CHARTS_DESTINATION)/my-cert.key \
+		-out $(CHARTS_DESTINATION)/my-cert.pem \
+		-sha256 -days 3650 -nodes -subj "/C=XX/ST=StateName/L=CityName/O=CompanyName/OU=CompanySectionName/CN=CommonNameOrHostname"
 
 .PHONY: update-deps
 update-deps: ## Update dependencies of the charts

@@ -74,14 +74,14 @@ spec:
               value: {{ .Values.ldap.username }}
             - name: LDAP_PASSWORD
               value: {{ .Values.ldap.password | quote }}
-            - name: LDAP_PROVIDER
-              value: {{ .Values.ldap.provider }}
             - name: LDAP_LOGGING
               value: {{ .Values.ldap.logging | quote }}
-            - name: LDAP_PROVIDER
-              value: {{ .Values.ldap.provider }}
             - name: LDAP_FILTERS_ON
               value: {{ .Values.ldap.filters }}
+            - name: LDAP_PROVIDER
+              value: {{ .Values.ldap.provider }}
+            - name: LDAP_TIMEOUT
+              value: {{ .Values.ldap.timeout }}
         {{- end}}
           image: "{{ .Values.image.repository }}:{{ .Values.image.version }}"
           livenessProbe:

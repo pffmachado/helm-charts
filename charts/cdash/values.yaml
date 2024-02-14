@@ -67,30 +67,13 @@ externalDatabase:
 ldap:
   enabled: false
   logging: true
-  hosts: localhost
+  timeout: 60
   provider: activedirectory
-  basedn: "ou=people,dc=organization,dc=com"
-  username: "cn=admin,dc=example,dc=com"
+  hosts:
+  basedn:
+  username:
   password:
   filters:
-
-  # The type of LDAP server you are connecting to.
-  # Valid values are activedirectory, openldap, and freeipa.
-  #LDAP_PROVIDER=
-  # Whether or not to log LDAP activities. Useful for debugging.
-  #LDAP_LOGGING=
-  # The LDAP users attribute containing their email address ('mail' by default).
-  #LDAP_EMAIL_ATTRIBUTE=
-  # The LDAP users attribute used to locate your users. ('mail' by default).
-  #LDAP_LOCATE_USERS_BY=
-  # The LDAP users attribute used for authentication ('distinguishedname' by default).
-  #LDAP_BIND_USERS_BY=
-  # The LDAP attribute name that contains your users object GUID.
-  #LDAP_GUID=
-  # Additional LDAP query filters to restrict authorized user list
-  # Example: To restrict users to a specific Active Directory group:
-  # '(memberOf=cn=superCoolRescrictedGroup,cn=Users,dc=example,dc=com)'
-  # LDAP_FILTERS_ON=
 
 resources:
   {}
