@@ -59,7 +59,7 @@ install: ## Dry-run Install Helm Chart
 	@for chart in $(CHARTS); do \
 		echo "dry-run $$chart ..."; \
 		CHART_NAME=`basename $$chart`; \
-		helm install --dry-run --debug $$CHART_NAME $$chart ; \
+		helm install --dry-run --debug -n $$CHART_NAME $$CHART_NAME $$chart ; \
 	done
 
 

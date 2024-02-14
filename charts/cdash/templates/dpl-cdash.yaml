@@ -63,9 +63,9 @@ spec:
             - name: CDASH_AUTHENTICATION_PROVIDER
               value: ldap
             - name: USERNAME_PASSWORD_AUTHENTICATION_ENABLED
-              value: true
+              value: "true"
             - name: USER_REGISTRATION_FORM_ENABLED
-              value: false
+              value: "false"
             - name: LDAP_HOSTS
               value: {{ .Values.ldap.hosts }}
             - name: LDAP_BASE_DN
@@ -77,7 +77,7 @@ spec:
             - name: LDAP_PROVIDER
               value: {{ .Values.ldap.provider }}
             - name: LDAP_LOGGING
-              value: {{ .Values.ldap.logging }}
+              value: {{ .Values.ldap.logging | quote }}
             - name: LDAP_PROVIDER
               value: {{ .Values.ldap.provider }}
             - name: LDAP_FILTERS_ON
