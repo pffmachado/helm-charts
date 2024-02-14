@@ -73,7 +73,7 @@ spec:
             - name: LDAP_USERNAME
               value: {{ .Values.ldap.username }}
             - name: LDAP_PASSWORD
-              value: {{ .Values.ldap.password }}
+              value: {{ .Values.ldap.password | quote }}
             - name: LDAP_PROVIDER
               value: {{ .Values.ldap.provider }}
             - name: LDAP_LOGGING
@@ -81,7 +81,7 @@ spec:
             - name: LDAP_PROVIDER
               value: {{ .Values.ldap.provider }}
             - name: LDAP_FILTERS_ON
-              value: {{ .Values.ldap.guid }}
+              value: {{ .Values.ldap.filters }}
         {{- end}}
           image: "{{ .Values.image.repository }}:{{ .Values.image.version }}"
           livenessProbe:
