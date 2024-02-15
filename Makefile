@@ -1,6 +1,6 @@
 CHARTS ?= $(shell find charts/* -maxdepth 0 -type d)
 CHARTS_DESTINATION := $(PWD)/.staging
-CHARTS_URL := "https://github.com/pffmachado/helm-charts/releases/download/__version__"
+CHARTS_URL := "https://github.com/pffmachado/helm-charts/releases/download/__version"
 
 .DEFAULT_GOAL := help
 
@@ -22,28 +22,24 @@ lint: clean ## Run Helm Lint
 	done
 
 .PHONY: package
-package: lint ## Package charts
-	@echo "=> Package"
+package:  lint ## Generate Package
 	@mkdir -p $(CHARTS_DESTINATION)
-	@for chart in $(CHARTS); do \
-		echo "packaging $$chart ..."; \
-		helm package $$chart -d $(CHARTS_DESTINATION); \
-	done
-
-.PHONY: index
-index:  package ## Generate Index
-	@echo "=> Index"
 	@cp index.yaml $(CHARTS_DESTINATION)
 	@for chart in $(CHARTS); do \
-		echo "index repo ..."; \
-		helm repo index $(CHARTS_DESTINATION) --merge index.yaml --url $(CHARTS_URL); \
+		echo "=> Index"; \
 		CHART_NAME=`basename $$chart`; \
-		CHART_NAME=`basename $(CHARTS_DESTINATION)/$$CHART_NAME* .tgz`; \
-		sed -i "s/__version__/$${CHART_NAME}/g" $(CHARTS_DESTINATION)/index.yaml ;\
+		echo "package $${CHART_NAME}..."; \
+		helm package $$chart -d $(CHARTS_DESTINATION); \
+		echo "index repo $${CHART_NAME} ..."; \
+		helm repo index $(CHARTS_DESTINATION) --merge index.yaml --url $(CHARTS_URL)__$${CHART_NAME}; \
+		CHART_VERSION=`basename $(CHARTS_DESTINATION)/$$CHART_NAME* .tgz`; \
+		echo "version $${CHART_VERSION} ..."; \
+		sed -i "s/__version__$${CHART_NAME}/$${CHART_VERSION}/g" $(CHARTS_DESTINATION)/index.yaml; \
+		rm -f $(CHARTS_DESTINATION)/$$CHART_NAME* .tgz; \
 	done
 	@cp $(CHARTS_DESTINATION)/index.yaml index.yaml
-.PHONY: index
 
+.PHONY: template
 template: ## Template Helm Chart
 	@echo "=> Template"
 	@mkdir -p $(CHARTS_DESTINATION)

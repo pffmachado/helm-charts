@@ -681,4 +681,15 @@ entries:
     urls:
     - https://github.com/pffmachado/helm-charts/releases/download/cdash-0.9.0/cdash-0.9.0.tgz
     version: 0.9.0
-generated: "2024-02-14T13:41:03.431023284Z"
+  flexlm:
+  - apiVersion: v2
+    appVersion: 1.16.0
+    created: "2024-02-15T23:30:19.605544708Z"
+    description: A Helm chart for FlexLM
+    digest: 7c5fcde1e37dcd8a8532cb13f552a2561285e85b87ddd0f33ca51ba52eb83d63
+    name: flexlm
+    type: application
+    urls:
+    - https://github.com/pffmachado/helm-charts/releases/download/flexlm-0.1.0/flexlm-0.1.0.tgz
+    version: 0.1.0
+generated: "2024-02-15T23:30:19.604839392Z"
