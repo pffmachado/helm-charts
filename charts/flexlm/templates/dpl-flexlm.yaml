@@ -28,9 +28,6 @@ spec:
       containers:
         - name: flexlm
           image: ghcr.io/hbkdaq/flexlm
-          failureThreshold: 20
-          periodSeconds: 5
-          timeoutSeconds: 10
           resources: {}
       imagePullSecretes:
         - name: hbkdaq
