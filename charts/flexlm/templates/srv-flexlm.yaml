@@ -1,16 +1,8 @@
 apiVersion: v1
 kind: Service
 metadata:
-  annotations:
-    kompose.cmd: kompose convert -c -f flexlm.yml
-    kompose.version: 1.31.2 (HEAD)
-  creationTimestamp: null
-  labels:
-    io.kompose.service: flexlm
   name: flexlm
 spec:
-  type: ExternalName
-  externalName: flexlm.apps.daq.hbm.com
   ports:
     - name: "27000"
       port: 27000
@@ -21,7 +13,5 @@ spec:
     - name: "53002"
       port: 53002
       targetPort: 53002
-  selector:
-    io.kompose.service: flexlm
 status:
   loadBalancer: {}
