@@ -25,10 +25,10 @@ spec:
         io.kompose.network/docker-default: "true"
         io.kompose.service: flexlm
     spec:
+      hostname: localhost
       containers:
         - name: flexlm
           image: ghcr.io/hbkdaq/flexlm
-          hostname: localhost
           command: ["/opt/flexlm/bin/lmgrd"]
           args: ["-z", "-c", "/opt/flexlm/licenses/0"]
           ports:
