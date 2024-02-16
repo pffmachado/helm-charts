@@ -3,6 +3,7 @@ kind: Service
 metadata:
   name: flexlm
 spec:
+  type: LoadBalancer
   ports:
     - name: "27000"
       port: 27000
@@ -13,5 +14,7 @@ spec:
     - name: "53002"
       port: 53002
       targetPort: 53002
+  selector:
+    io.kompose.service: flexlm
 status:
   loadBalancer: {}
