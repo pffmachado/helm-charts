@@ -34,6 +34,9 @@ spec:
               hostPort: 27000
               protocol: TCP
           resources: {}
+          securityContext:
+            capabilities:
+              add: ["NET_ADMIN", "MAC_OVERWRITE"]
       imagePullSecrets:
         - name: hbkdaq
       restartPolicy: Always
