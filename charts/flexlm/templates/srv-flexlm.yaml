@@ -15,6 +15,12 @@ spec:
     - name: "27000"
       port: 27000
       targetPort: 27000
+    - name: "53001"
+      port: 53001
+      targetPort: 53001
+    - name: "53002"
+      port: 53002
+      targetPort: 53002
   selector:
     io.kompose.service: flexlm
 status:

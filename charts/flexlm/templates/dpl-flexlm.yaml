@@ -33,6 +33,12 @@ spec:
             - containerPort: 27000
               hostPort: 27000
               protocol: TCP
+            - containerPort: 53001
+              hostPort: 53001
+              protocol: TCP
+            - containerPort: 53002
+              hostPort: 53002
+              protocol: TCP
           resources: {}
           securityContext:
             capabilities:
