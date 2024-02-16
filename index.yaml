@@ -695,6 +695,16 @@ entries:
   flexlm:
   - apiVersion: v2
     appVersion: 1.16.0
+    created: "2024-02-16T15:03:40.315899215Z"
+    description: A Helm chart for FlexLM
+    digest: a26c1ea731a817da3f176073f9fd3ca5970039a26cb330413c34c201f01188c7
+    name: flexlm
+    type: application
+    urls:
+    - https://github.com/pffmachado/helm-charts/releases/download/flexlm-0.8.1/flexlm-0.8.1.tgz
+    version: 0.8.1
+  - apiVersion: v2
+    appVersion: 1.16.0
     created: "2024-02-16T14:58:51.335450731Z"
     description: A Helm chart for FlexLM
     digest: de9256ac2ee802258ba523c2c9dabd35f2354e9638c9d1f234f0f982a5de40ae
@@ -773,4 +783,4 @@ entries:
     urls:
     - https://github.com/pffmachado/helm-charts/releases/download/flexlm-0.1.0/flexlm-0.1.0.tgz
     version: 0.1.0
-generated: "2024-02-16T14:58:51.335560086Z"
+generated: "2024-02-16T15:03:40.316011745Z"
