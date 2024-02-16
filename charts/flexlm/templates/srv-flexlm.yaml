@@ -10,9 +10,9 @@ metadata:
   name: flexlm
 spec:
   ports:
-    - name: "443"
-      port: 443
-      targetPort: 443
+    - name: "27000"
+      port: 27000
+      targetPort: 27000
   selector:
     io.kompose.service: flexlm
 status:
