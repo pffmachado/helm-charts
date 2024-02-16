@@ -29,8 +29,6 @@ spec:
       containers:
         - name: flexlm
           image: ghcr.io/hbkdaq/flexlm
-          command: ["/opt/flexlm/bin/lmgrd"]
-          args: ["-z", "-c", "/opt/flexlm/licenses/0"]
           ports:
             - containerPort: 27000
               hostPort: 27000
