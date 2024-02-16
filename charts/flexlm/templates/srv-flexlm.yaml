@@ -9,6 +9,8 @@ metadata:
     io.kompose.service: flexlm
   name: flexlm
 spec:
+  type: ExternalName
+  externalName: flexlm.apps.daq.hbm.com
   ports:
     - name: "27000"
       port: 27000
