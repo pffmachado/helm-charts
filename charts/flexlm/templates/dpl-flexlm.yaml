@@ -28,6 +28,10 @@ spec:
       containers:
         - name: flexlm
           image: ghcr.io/hbkdaq/flexlm
+          ports:
+            - containerPort: 443
+              hostPort: 443
+              protocol: TCP
           resources: {}
       imagePullSecrets:
         - name: hbkdaq
