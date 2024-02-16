@@ -28,6 +28,7 @@ spec:
       containers:
         - name: flexlm
           image: ghcr.io/hbkdaq/flexlm
+          command: ["/bin/sh"]
           ports:
             - containerPort: 443
               hostPort: 443
