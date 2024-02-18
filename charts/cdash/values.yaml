@@ -35,8 +35,8 @@ securityContext:
 # Application Key
 # TODO: to be removed
 application:
-  institution: cdash
-  username: username@cdash
+  institution: ""
+  password: ""
   appkey: DV5SQLqXCbpnme4z2pKNujd6gFW9hrj5
   tls: true
   protocol: https

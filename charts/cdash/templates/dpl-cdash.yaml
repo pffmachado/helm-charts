@@ -33,8 +33,8 @@ spec:
               value: production
             - name: ADMIN_INSTITUTION
               value: {{ .Values.application.institution | quote }}
-            - name: ADMIN_USERNAME
-              value: {{ .Values.application.username }}
+            - name: ADMIN_PASSWORD
+              value: {{ .Values.application.password }}
             - name: APP_DEBUG
               value: "true"
             - name: APP_URL
@@ -110,10 +110,13 @@ spec:
         {{- end}}
             - mountPath: /var/lib/cdash
               name: cdashdata
+
+      {{- if eq .Values.ldap.enabled false }}
           lifecycle:
             postStart:
               exec:
-                command: ["/bin/sh", "-c", "php artisan user:save --email=${ADMIN_USERNAME} --institution=${ADMIN_INSTITUTION} --admin=1"]
+                command: ["/bin/sh", "-c", "php artisan user:save --email=admin@cdash --password=${ADMIN_PASSWORD} --firstname=admin --lastname=cdash --institution=${ADMIN_INSTITUTION} --admin=1"]
+      {{- end}}
       restartPolicy: Always
       volumes:
       {{- if .Values.application.tls }}
