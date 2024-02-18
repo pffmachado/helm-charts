@@ -10,9 +10,9 @@ metadata:
   name: cdash
 spec:
   ports:
-    - name: "443"
-      port: 443
-      targetPort: 443
+    - name: {{ .Values.application.port | quote }}
+      port: {{ .Values.application.port }}
+      targetPort: {{ .Values.application.port }}
   selector:
     io.kompose.service: cdash
 status:

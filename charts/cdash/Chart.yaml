@@ -1,7 +1,7 @@
 apiVersion: v2
 name: cdash
 description: A Helm Chart for CDash
-version: 0.9.40
+version: 0.9.41
 icon: https://www.cdash.org/wp-content/uploads/2019/05/slider-cdash.png
 keywords:
   - cdash

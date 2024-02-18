@@ -38,7 +38,9 @@ application:
   institution: cdash
   password: ""
   appkey: DV5SQLqXCbpnme4z2pKNujd6gFW9hrj5
-  protocol: https
+  tls: false
+  protocol: http
+  port: 8080
   host: localhost
   pem: ""
     # pem: |

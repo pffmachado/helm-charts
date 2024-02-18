@@ -28,7 +28,7 @@ spec:
       hostname: localhost
       containers:
         - name: flexlm
-          image: ghcr.io/hbkdaq/flexlm
+          image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
           ports:
             - containerPort: 27000
               hostPort: 27000

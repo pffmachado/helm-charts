@@ -93,11 +93,12 @@ spec:
             timeoutSeconds: 10
           name: cdash
           ports:
-            - containerPort: 443
-              hostPort: 443
+            - containerPort: {{ .Values.application.port }}
+              hostPort: {{ .Values.application.port }}
               protocol: TCP
           resources: {}
           volumeMounts:
+        {{- if .Values.application.tls }}
             - name: cdash-my-cert-pem
               mountPath: "/var/www/my-cert.pem"
               subPath: my-cert.pem
@@ -106,6 +107,7 @@ spec:
               mountPath: "/var/www/my-cert.key"
               subPath: my-cert.key
               readOnly: false
+        {{- end}}
             - mountPath: /var/lib/cdash
               name: cdashdata
           lifecycle:
@@ -114,14 +116,16 @@ spec:
                 command: ["/bin/sh", "-c", "php artisan user:save --email=admin@cdash --password=${ADMIN_PASSWORD} --firstname=admin --lastname=cdash --institution=${ADMIN_INSTITUTION} --admin=1"]
       restartPolicy: Always
       volumes:
-        - name: cdashdata
-          persistentVolumeClaim:
-            claimName: cdashdata
-        - name: cdash-my-cert-pem
-          configMap:
-            name: my-cert.pem
+      {{- if .Values.application.tls }}
         - name: cdash-my-cert-key
           configMap:
             name: my-cert.key
+        - name: cdash-my-cert-pem
+          configMap:
+            name: my-cert.pem
+      {{- end}}
+        - name: cdashdata
+          persistentVolumeClaim:
+            claimName: cdashdata
 
 status: {}
