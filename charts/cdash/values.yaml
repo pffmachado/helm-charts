@@ -38,6 +38,7 @@ application:
   institution: ""
   password: ""
   appkey: DV5SQLqXCbpnme4z2pKNujd6gFW9hrj5
+  env: testing
   tls: true
   protocol: https
   port: 443
