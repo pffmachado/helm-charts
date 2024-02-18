@@ -36,11 +36,11 @@ securityContext:
 # TODO: to be removed
 application:
   institution: cdash
-  password: ""
+  username: username@cdash
   appkey: DV5SQLqXCbpnme4z2pKNujd6gFW9hrj5
-  tls: false
-  protocol: http
-  port: 8080
+  tls: true
+  protocol: https
+  port: 443
   host: localhost
   pem: ""
     # pem: |
