@@ -7,5 +7,7 @@ spec:
     - name: {{ .Values.application.port | quote }}
       port: {{ .Values.application.port }}
       targetPort: {{ .Values.application.port }}
+  selector:
+    app: cdash
 status:
   loadBalancer: {}

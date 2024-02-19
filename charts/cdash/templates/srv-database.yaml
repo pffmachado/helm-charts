@@ -7,5 +7,7 @@ spec:
     - name: {{ .Values.database.port | quote }}
       port: {{ .Values.database.port }}
       targetPort: {{ .Values.database.port }}
+  selector:
+    app: database
 status:
   loadBalancer: {}
