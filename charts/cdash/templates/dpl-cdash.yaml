@@ -99,7 +99,7 @@ spec:
               subPath: my-cert.key
               readOnly: false
         {{- end}}
-            - mountPath: /var/lib/cdash
+            - mountPath: /cdash/storage
               name: cdashdata
 
       {{- if eq .Values.ldap.enabled false }}
@@ -121,5 +121,4 @@ spec:
         - name: cdashdata
           persistentVolumeClaim:
             claimName: cdashdata
-
 status: {}

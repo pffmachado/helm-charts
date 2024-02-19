@@ -30,6 +30,8 @@ securityContext: {}
   # runAsUser: 1000
 
 
+storageClassName: local-path
+
 # Application Key
 # TODO: to be removed
 application:
@@ -60,7 +62,7 @@ worker:
 database:
   connection: pgsql
   name: cdash
-  host: database
+  host: cdash-database
   username: postgres
   password: secret
   port: 5432
