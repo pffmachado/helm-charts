@@ -31,7 +31,7 @@ package:  lint ## Generate Package
 		echo "package $${CHART_NAME}..."; \
 		helm package $$chart -d $(CHARTS_DESTINATION); \
 		echo "index repo $${CHART_NAME} ..."; \
-		helm repo index $(CHARTS_DESTINATION) --merge index.yaml --url $(CHARTS_URL)__$${CHART_NAME}; \
+		helm repo index $(CHARTS_DESTINATION) --merge $(CHARTS_DESTINATION)/index.yaml --url $(CHARTS_URL)__$${CHART_NAME}; \
 		CHART_VERSION=`basename $(CHARTS_DESTINATION)/$$CHART_NAME* .tgz`; \
 		echo "version $${CHART_VERSION} ..."; \
 		sed -i "s/__version__$${CHART_NAME}/$${CHART_VERSION}/g" $(CHARTS_DESTINATION)/index.yaml; \
