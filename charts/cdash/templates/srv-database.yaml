@@ -8,6 +8,6 @@ spec:
       port: {{ .Values.database.port }}
       targetPort: {{ .Values.database.port }}
   selector:
-    app: database
+    app: cdash-database
 status:
   loadBalancer: {}

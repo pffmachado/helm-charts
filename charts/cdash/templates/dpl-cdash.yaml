@@ -6,6 +6,9 @@ metadata:
   name: cdash
 spec:
   replicas: 1
+  selector:
+    matchLabels:
+      app: cdash
   strategy:
     type: Recreate
   template:
