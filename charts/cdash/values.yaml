@@ -18,12 +18,10 @@ serviceAccount:
   # If not set and create is true, a name is generated using the fullname template
   name:
 
-podSecurityContext:
-  {}
+podSecurityContext: {}
   # fsGroup: 2000
 
-securityContext:
-  {}
+securityContext: {}
   # capabilities:
   #   drop:
   #   - ALL
@@ -40,8 +38,8 @@ application:
   appkey: DV5SQLqXCbpnme4z2pKNujd6gFW9hrj5
   env: testing
   tls: true
-  protocol: https
-  port: 443
+  protocol: http
+  port: 8080
   host: localhost
   pem: ""
     # pem: |
@@ -59,9 +57,9 @@ worker:
   remote: true
   protocol: http
 
-externalDatabase:
+database:
   connection: pgsql
-  database: cdash
+  name: cdash
   host: database
   username: postgres
   password: secret
@@ -78,8 +76,7 @@ ldap:
   password:
   filters:
 
-resources:
-  {}
+resources: {}
   # We usually recommend not to specify default resources and to leave this as a conscious
   # choice for the user. This also increases chances charts run on environments with little
   # resources, such as Minikube. If you do want to specify resources, uncomment the following

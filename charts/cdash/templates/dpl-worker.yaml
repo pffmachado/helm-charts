@@ -1,29 +1,12 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  annotations:
-    kompose.cmd: kompose convert -c -f cdash.yml
-    kompose.version: 1.31.2 (HEAD)
-  creationTimestamp: null
-  labels:
-    io.kompose.service: worker
-  name: worker
+  name: cdash-worker
 spec:
   replicas: 1
-  selector:
-    matchLabels:
-      io.kompose.service: worker
   strategy:
     type: Recreate
   template:
-    metadata:
-      annotations:
-        kompose.cmd: kompose convert -c -f cdash.yml
-        kompose.version: 1.31.2 (HEAD)
-      creationTimestamp: null
-      labels:
-        io.kompose.network/docker-default: "true"
-        io.kompose.service: worker
     spec:
       containers:
         - env:
@@ -34,17 +17,17 @@ spec:
             - name: APP_KEY
               value: {{ .Values.application.appkey }}
             - name: DB_CONNECTION
-              value: {{ .Values.externalDatabase.connection }}
+              value: {{ .Values.database.connection }}
             - name: DB_DATABASE
-              value: {{ .Values.externalDatabase.database }}
+              value: {{ .Values.database.name }}
             - name: DB_HOST
-              value: {{ .Values.externalDatabase.host }}
+              value: {{ .Values.database.host }}
             - name: DB_USERNAME
-              value: {{ .Values.externalDatabase.username }}
+              value: {{ .Values.database.username }}
             - name: DB_PASSWORD
-              value: {{ .Values.externalDatabase.password }}
+              value: {{ .Values.database.password }}
             - name: DB_PORT
-              value: {{ .Values.externalDatabase.port | quote }}
+              value: {{ .Values.database.port | quote }}
             - name: QUEUE_CONNECTION
               value: {{ .Values.worker.connection }}
             - name: REMOTE_WORKERS

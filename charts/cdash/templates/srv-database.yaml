@@ -1,19 +1,11 @@
 apiVersion: v1
 kind: Service
 metadata:
-  annotations:
-    kompose.cmd: kompose convert -c -f cdash.yml
-    kompose.version: 1.31.2 (HEAD)
-  creationTimestamp: null
-  labels:
-    io.kompose.service: database
-  name: database
+  name: cdash-database
 spec:
   ports:
-    - name: {{ .Values.externalDatabase.port | quote }}
-      port: {{ .Values.externalDatabase.port }}
-      targetPort: {{ .Values.externalDatabase.port }}
-  selector:
-    io.kompose.service: database
+    - name: {{ .Values.database.port | quote }}
+      port: {{ .Values.database.port }}
+      targetPort: {{ .Values.database.port }}
 status:
   loadBalancer: {}
