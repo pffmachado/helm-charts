@@ -101,13 +101,10 @@ spec:
         {{- end}}
             - mountPath: /cdash/storage
               name: cdashdata
-
-      {{- if eq .Values.ldap.enabled false }}
           lifecycle:
             postStart:
               exec:
-                command: ["/bin/sh", "-c", "php artisan user:save --email=admin@cdash --password=${ADMIN_PASSWORD} --firstname=admin --lastname=cdash --institution=${ADMIN_INSTITUTION} --admin=1"]
-      {{- end}}
+                command: ["/bin/sh", "-c", "php artisan storage:mkdirs"]
       restartPolicy: Always
       volumes:
       {{- if .Values.application.tls }}
