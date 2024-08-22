@@ -1,3 +1,4 @@
+{{- if .Values.application.pem }}
 apiVersion: v1
 kind: ConfigMap
 metadata:
@@ -5,4 +6,5 @@ metadata:
   name: my-cert.pem
 data:
   my-cert.pem: |
-    {{- .Values.application.pem | nindent 4 }}
+    {{- .Values.application.pem | nindent 4 }}~
+{{- end }}

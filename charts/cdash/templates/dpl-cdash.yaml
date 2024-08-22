@@ -24,8 +24,17 @@ spec:
               value: {{ .Values.application.env }}
             - name: ADMIN_INSTITUTION
               value: {{ .Values.application.institution | quote }}
+            {{- if .Values.application.password }}
             - name: ADMIN_PASSWORD
               value: {{ .Values.application.password }}
+            {{- end}}
+            {{- if .Values.application.password_secret }}
+            - name: ADMIN_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: {{ .Values.application.password_secret }}
+                  key: password
+            {{- end}}
             - name: APP_DEBUG
               value: "true"
             - name: APP_URL
@@ -110,10 +119,10 @@ spec:
       {{- if .Values.application.tls }}
         - name: cdash-my-cert-key
           configMap:
-            name: my-cert.key
+            name: {{ .Values.application.key_secret | default "my-cert.key" }}
         - name: cdash-my-cert-pem
           configMap:
-            name: my-cert.pem
+            name: {{ .Values.application.pem_secret | default "my-cert.key" }}
       {{- end}}
         - name: cdashdata
           persistentVolumeClaim:
