@@ -81,7 +81,7 @@ spec:
               valueFrom:
                 secretKeyRef:
                   name: {{ .Values.ldap.password_secret }}
-                  key: ldap_password
+                  key: ldap-password
             {{- end}}
             - name: LDAP_LOGGING
               value: {{ .Values.ldap.logging | quote }}
@@ -127,11 +127,21 @@ spec:
       volumes:
       {{- if .Values.application.tls }}
         - name: cdash-my-cert-key
+          {{- if .Values.application.key_secret }}
+          secret:
+            secretName: {{ .Values.application.key_secret }}
+          {{- else}}
           configMap:
-            name: {{ .Values.application.key_secret | default "my-cert.key" }}
+            name: my-cert.key
+          {{- end}}
         - name: cdash-my-cert-pem
+          {{- if .Values.application.pem_secret }}
+          secret:
+            secretName: {{ .Values.application.pem_secret }}
+          {{- else}}
           configMap:
-            name: {{ .Values.application.pem_secret | default "my-cert.key" }}
+            name: my-cert.pem
+          {{- end}}
       {{- end}}
         - name: cdashdata
           persistentVolumeClaim:
