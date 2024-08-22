@@ -65,11 +65,23 @@ spec:
         - name: cdashdata
           persistentVolumeClaim:
             claimName: cdashdata
-        - name: cdash-my-cert-pem
-          configMap:
-            name: my-cert.pem
+        {{- if .Values.application.tls }}
         - name: cdash-my-cert-key
+          {{- if .Values.application.key_secret }}
+          secret:
+            secretName: {{ .Values.application.key_secret }}
+          {{- else}}
           configMap:
             name: my-cert.key
+          {{- end}}
+        - name: cdash-my-cert-pem
+          {{- if .Values.application.pem_secret }}
+          secret:
+            secretName: {{ .Values.application.pem_secret }}
+          {{- else}}
+          configMap:
+            name: my-cert.pem
+          {{- end}}
+        {{- end}}
 
 status: {}

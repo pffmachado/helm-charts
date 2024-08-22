@@ -127,21 +127,21 @@ spec:
       volumes:
       {{- if .Values.application.tls }}
         - name: cdash-my-cert-key
-        {{- if .Values.application.key_secret }}
+          {{- if .Values.application.key_secret }}
           secret:
             secretName: {{ .Values.application.key_secret }}
-        {{- else}}
+          {{- else}}
           configMap:
             name: my-cert.key
-        {{- end}}
+          {{- end}}
         - name: cdash-my-cert-pem
-        {{- if .Values.application.pem_secret }}
+          {{- if .Values.application.pem_secret }}
           secret:
             secretName: {{ .Values.application.pem_secret }}
-        {{- else}}
+          {{- else}}
           configMap:
             name: my-cert.pem
-        {{- end}}
+          {{- end}}
       {{- end}}
         - name: cdashdata
           persistentVolumeClaim:
