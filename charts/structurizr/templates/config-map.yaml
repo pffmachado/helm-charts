@@ -83,8 +83,8 @@ data:
       <beans:bean id="contextSource" class="org.springframework.security.ldap.DefaultSpringSecurityContextSource">
           <beans:constructor-arg value="{{ .Values.ldap.serverUrl }}"/>
           {{- if .Values.ldap.existingSecret }}
-          <beans:property name="userDn" value="{{ .Values.ldap.existingSecret | printf \"$(kubectl get secret %s -o jsonpath='{.data.bindDn}' | base64 --decode)\" }}"/>
-          <beans:property name="password" value="{{ .Values.ldap.existingSecret | printf \"$(kubectl get secret %s -o jsonpath='{.data.bindPassword}' | base64 --decode)\" }}"/>
+          <beans:property name="userDn" value="{{ index (index .Values.secrets .Values.ldap.existingSecret).data "bindDn" }}"/>
+          <beans:property name="password" value="{{ index (index .Values.secrets .Values.ldap.existingSecret).data "bindPassword" }}"/>
           {{- else }}
           <beans:property name="userDn" value="{{ .Values.ldap.bindDn }}"/>
           <beans:property name="password" value="{{ .Values.ldap.bindPassword }}"/>
