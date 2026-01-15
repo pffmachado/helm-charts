@@ -1,0 +1,111 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ include "structurizr.fullname" . }}
+  labels:
+    {{- include "structurizr.labels" . | nindent 4 }}
+spec:
+  {{- if not .Values.autoscaling.enabled }}
+  replicas: {{ .Values.replicaCount }}
+  {{- end }}
+  selector:
+    matchLabels:
+      {{- include "structurizr.selectorLabels" . | nindent 6 }}
+  template:
+    metadata:
+      {{- with .Values.podAnnotations }}
+      annotations:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      labels:
+        {{- include "structurizr.selectorLabels" . | nindent 8 }}
+    spec:
+      {{- with .Values.imagePullSecrets }}
+      imagePullSecrets:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      serviceAccountName: {{ include "structurizr.serviceAccountName" . }}
+      securityContext:
+        {{- toYaml .Values.podSecurityContext | nindent 8 }}
+      containers:
+        - name: {{ .Chart.Name }}
+          {{- with .Values.env }}
+          env:
+            {{- toYaml . | nindent 12 }}
+          {{- end }}
+          securityContext:
+            {{- toYaml .Values.securityContext | nindent 12 }}
+          image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
+          imagePullPolicy: {{ .Values.image.pullPolicy }}
+          ports:
+            - name: http
+              containerPort: {{ .Values.service.port }}
+              protocol: TCP
+                #          livenessProbe:
+                #            httpGet:
+                #              path: /
+                #              port: http
+                #              initialDelaySeconds: 30
+          readinessProbe:
+            httpGet:
+              path: /
+              port: http
+            initialDelaySeconds: 10
+          volumeMounts:
+          {{- with .Values.volumeMounts }}
+            {{- toYaml . | nindent 12 }}
+          {{- end }}
+            - name: properties-volume
+              mountPath: /usr/local/structurizr/structurizr.properties
+              subPath: structurizr.properties
+            - name: users-volume
+              mountPath: /usr/local/structurizr/structurizr.users
+              subPath: structurizr.users
+            - name: roles-volume
+              mountPath: /usr/local/structurizr/structurizr.roles
+              subPath: structurizr.roles
+            - name: saml-idp-metadata-volume
+              mountPath: /usr/local/structurizr/saml-idp-metadata.xml
+              subPath: saml-idp-metadata.xml
+            - name: ldap-volume
+              mountPath: /usr/local/structurizr/ldap.xml
+              subPath: ldap.xml
+            - name: log4j2-volume
+              mountPath: /usr/local/structurizr/log4j2.properties
+              subPath: log4j2.properties
+          resources:
+            {{- toYaml .Values.resources | nindent 12 }}
+      volumes:
+      {{- with .Values.volumes }}
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+        - name: properties-volume
+          configMap:
+            name: {{ include "structurizr.fullname" . }}-properties
+        - name: users-volume
+          configMap:
+            name: {{ include "structurizr.fullname" . }}-users
+        - name: roles-volume
+          configMap:
+            name: {{ include "structurizr.fullname" . }}-roles
+        - name: saml-idp-metadata-volume
+          configMap:
+            name: {{ include "structurizr.fullname" . }}-saml-idp-metadata
+        - name: ldap-volume
+          configMap:
+            name: {{ include "structurizr.fullname" . }}-ldap
+        - name: log4j2-volume
+          configMap:
+            name: {{ include "structurizr.fullname" . }}-log4j2
+      {{- with .Values.nodeSelector }}
+      nodeSelector:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- with .Values.affinity }}
+      affinity:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- with .Values.tolerations }}
+      tolerations:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}

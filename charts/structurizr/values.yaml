@@ -1,0 +1,168 @@
+# -- Specify the number of replicas.
+replicaCount: 1
+
+image:
+  repository: structurizr/onpremises
+  pullPolicy: IfNotPresent
+  # Overrides the image tag whose default is the chart appVersion.
+  tag: ""
+
+imagePullSecrets: []
+nameOverride: ""
+fullnameOverride: ""
+
+serviceAccount:
+  # Specifies whether a service account should be created
+  create: true
+  # Annotations to add to the service account
+  annotations: {}
+    # iam.gke.io/gcp-service-account: structurizr@*.iam.gserviceaccount.com
+  # The name of the service account to use.
+  # If not set and create is true, a name is generated using the fullname template
+  name: ""
+
+podAnnotations: {}
+  # gke-gcsfuse/volumes: "true"
+
+podSecurityContext: {}
+  # fsGroup: 2000
+
+securityContext: {}
+  # capabilities:
+  #   drop:
+  #   - ALL
+  # readOnlyRootFilesystem: true
+  # runAsNonRoot: true
+  # runAsUser: 1000
+
+service:
+  type: ClusterIP
+  port: 8080
+
+ingress:
+  enabled: false
+  className: ""
+  annotations: {}
+    # kubernetes.io/ingress.class: nginx
+    # kubernetes.io/tls-acme: "true"
+  hosts:
+    - host: structurizr.local
+      paths:
+        - path: /
+          pathType: ImplementationSpecific
+  tls: []
+  #  - secretName: structurizr-tls
+  #    hosts:
+  #      - structurizr.local
+
+resources: {}
+  # We usually recommend not to specify default resources and to leave this as a conscious
+  # choice for the user. This also increases chances charts run on environments with little
+  # resources, such as Minikube. If you do want to specify resources, uncomment the following
+  # lines, adjust them as necessary, and remove the curly braces after 'resources:'.
+  # limits:
+  #   cpu: 100m
+  #   memory: 128Mi
+  # requests:
+  #   cpu: 100m
+  #   memory: 128Mi
+
+autoscaling:
+  enabled: false
+  minReplicas: 1
+  maxReplicas: 100
+  targetCPUUtilizationPercentage: 80
+  # targetMemoryUtilizationPercentage: 80
+
+nodeSelector: {}
+
+tolerations: []
+
+# -- Affinity settings for pod assignment.
+affinity: {}
+
+# -- List of additional volumes to be added to the pods.
+volumes: []
+  # - name: my-storage
+  #   persistentVolumeClaim:
+  #     claimName: my-pvc
+  # - name: structurizr-bucket
+  #   csi:
+  #   driver: gcsfuse.csi.storage.gke.io
+  #   volumeAttributes:
+  #     bucketName: "structurizr-google-storage-bucket-name"
+  #     mountOptions: "implicit-dirs"
+
+# -- Specifies where to mount the volumes in the pod.
+volumeMounts: []
+  # - name: my-storage
+  #   mountPath: /path/in/container
+  # - name: structurizr-bucket
+  #   mountPath: /usr/local/structurizr
+
+persistence:
+  enabled: false
+  name: ""
+  # -- Specifies the size of the PersistentVolume.
+  size: 1Gi
+  # -- Specifies the access mode of the PersistentVolume.
+  accessModes:
+    - ReadWriteOnce
+  # -- Specifies the storage class of the PersistentVolume.
+  storageClass: ""
+
+# -- Custom properties configuration for Structurizr.
+properties: |
+#   # Your properties content goes here...
+#   structurizr.redis.password=${REDIS_PASSWORD}
+#   structurizr.authentication=saml
+#   structurizr.feature.ui.dslEditor=true
+#   structurizr.safeMode=false
+#   # and so on...
+
+# -- Specifies user credentials for Structurizr.
+users: |
+#   # Your users content goes here...
+#   {username}={hashed password}
+#   # and so on...
+
+# -- Specifies user roles for Structurizr.
+roles: |
+#   # Your roles content goes here...
+#   {username}={role1},{role2},{role3}
+#   # and so on...
+
+# -- SAML identity provider metadata configuration for Structurizr authentication.
+saml: |
+#   # Your saml-idp-metadata.xml configuration goes here...
+
+# -- LDAP configuration for Structurizr authentication.
+#    note: based on Spring Framework for LDAP authentication
+ldap:
+  enabled: false
+  # Set existing secret in order to get bindDn and bindPassword as secret data. If set,
+  # ldap.bindDn and ldap.bindPassword should be left empty.
+  # The release will fetch for 'bindDn' and 'bindPassword' keys in the specified secret.
+  existingSecret: ""
+  # LDAP Server URL - start with ldap:// or ldaps://
+  serverUrl:
+  bindDn:
+  bindPassword:
+  userSearchBase:
+  userSearchFilter:
+  groupSearchFilter:
+
+# -- Configuration settings for the logging system using Log4j2.
+log4j2: |
+#   # Your log4j2 configuration goes here...
+#   # See: https://github.com/structurizr/onpremises/blob/main/structurizr-onpremises/src/main/resources/log4j2.properties
+
+# -- List of environment variables to be set for the Structurizr pod.
+env:
+  - name: STRUCTURIZR_DATA_DIRECTORY
+    value: "/usr/local/structurizr"
+
+# -- Additional labels
+labels:
+#  team: ops
+#  environment: production
