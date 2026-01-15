@@ -1074,4 +1074,24 @@ entries:
     urls:
     - https://github.com/pffmachado/helm-charts/releases/download/flexlm-0.1.0/flexlm-0.1.0.tgz
     version: 0.1.0
-generated: "2024-08-22T12:32:52.331537435Z"
+  structurizr:
+  - apiVersion: v2
+    appVersion: 2025.11.09
+    created: "2026-01-15T17:25:24.083950008Z"
+    description: The Structurizr Helm chart deploys Structurizr On premise flavor.
+      Structurizr is a web-based rendering tool designed to help software development
+      teams create software architecture diagrams and documentation.
+    digest: 8d92b2c86cd0a53fe2186d35047829f2f20ca99ef2f1e62de8eff2d95a741ad4
+    icon: https://avatars.githubusercontent.com/u/7525795?s=200&v=4
+    keywords:
+    - structurizr
+    - diagrams
+    - kubernetes
+    name: structurizr
+    sources:
+    - https://structurizr.com/help/on-premises
+    type: application
+    urls:
+    - https://github.com/pffmachado/helm-charts/releases/download/structurizr-0.5.0/structurizr-0.5.0.tgz
+    version: 0.5.0
+generated: "2026-01-15T17:25:24.084128882Z"
