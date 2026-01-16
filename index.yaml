@@ -2,9 +2,9 @@ apiVersion: v1
 entries:
   cdash:
   - apiVersion: v2
-    created: "2026-01-15T17:16:21.533890786Z"
+    created: "2026-01-16T09:13:27.231318324Z"
     description: A Helm Chart for CDash
-    digest: 7c79858f9d34611eda48b634b51c8f754acf2805a38fc8e7f03f4b0df8e81943
+    digest: a8ae1ad300ea681a4c03a33d2b90a285c0fc8753998db0ef3f485c0095ad1f16
     home: https://www.cdash.org
     icon: https://www.cdash.org/wp-content/uploads/2019/05/slider-cdash.png
     keywords:
@@ -55,9 +55,9 @@ entries:
   flexlm:
   - apiVersion: v2
     appVersion: 1.16.0
-    created: "2026-01-15T17:16:21.692152012Z"
+    created: "2026-01-16T09:13:27.402173057Z"
     description: A Helm chart for FlexLM
-    digest: b7ee7ae0e7e5cedf431c618b2efdf7ef770bed00ccba0f413d809e00595f0814
+    digest: a89e135d5e71ef948773098e89b02632a57d802cf6f5129d4127cc0624966916
     name: flexlm
     type: application
     urls:
@@ -216,11 +216,11 @@ entries:
   structurizr:
   - apiVersion: v2
     appVersion: 2025.11.09
-    created: "2026-01-15T17:16:21.885769555Z"
+    created: "2026-01-16T09:13:27.597232237Z"
     description: The Structurizr Helm chart deploys Structurizr On premise flavor.
       Structurizr is a web-based rendering tool designed to help software development
       teams create software architecture diagrams and documentation.
-    digest: cb5fa3e98473b6544f2492dad83c6df0a1e3f4523a959935878f33d127ff7439
+    digest: 7b218d24b4b9f50b5b40a776cd44ec41e1fe4864f6e60eeae760d14ac33afd76
     icon: https://avatars.githubusercontent.com/u/7525795?s=200&v=4
     keywords:
     - structurizr
@@ -233,4 +233,4 @@ entries:
     urls:
     - https://github.com/pffmachado/helm-charts/releases/download/structurizr-0.5.0/structurizr-0.5.0.tgz
     version: 0.5.0
-generated: "2026-01-15T17:16:21.883725462Z"
+generated: "2026-01-16T09:13:27.593581014Z"
