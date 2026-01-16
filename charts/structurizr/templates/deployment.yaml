@@ -27,6 +27,32 @@ spec:
       serviceAccountName: {{ include "structurizr.serviceAccountName" . }}
       securityContext:
         {{- toYaml .Values.podSecurityContext | nindent 8 }}
+      {{- if .Values.ldap.enabled }}
+      initContainers:
+        - name: ldap-config-init
+          image: bhgedigital/envsubst
+          args:
+            - /bin/sh
+            - -c
+            - cat /data/ldap.xml | envsubst > /usr/local/structurizr/ldap.xml
+          env:
+            - name: LDAP_BIND_DN
+              valueFrom:
+                secretKeyRef:
+                  name: {{ .Values.ldap.existingSecret }}
+                  key: bindDn
+            - name: LDAP_BIND_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: {{ .Values.ldap.existingSecret }}
+                  key: bindPassword
+          volumeMounts:
+            - name: ldap-volume
+              mountPath: /usr/local/structurizr
+            - name: ldap-config-data
+              mountPath: /data/ldap.xml
+              subPath: ldap.xml
+      {{- end }}
       containers:
         - name: {{ .Chart.Name }}
           {{- with .Values.env }}
@@ -69,8 +95,7 @@ spec:
               subPath: saml-idp-metadata.xml
           {{- if .Values.ldap.enabled }}
             - name: ldap-volume
-              mountPath: /usr/local/structurizr/ldap.xml
-              subPath: ldap.xml
+              mountPath: /usr/local/structurizr
           {{- end }}
             - name: log4j2-volume
               mountPath: /usr/local/structurizr/log4j2.properties
@@ -94,9 +119,11 @@ spec:
           configMap:
             name: {{ include "structurizr.fullname" . }}-saml-idp-metadata
       {{- if .Values.ldap.enabled }}
-        - name: ldap-volume
+        - name: ldap-config-data
           configMap:
             name: {{ include "structurizr.fullname" . }}-ldap
+        - name: ldap-volume
+          emptyDir: {}
       {{- end }}
         - name: log4j2-volume
           configMap:
