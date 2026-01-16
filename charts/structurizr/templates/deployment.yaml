@@ -67,9 +67,11 @@ spec:
             - name: saml-idp-metadata-volume
               mountPath: /usr/local/structurizr/saml-idp-metadata.xml
               subPath: saml-idp-metadata.xml
+          {{- if .Values.ldap.enabled }}
             - name: ldap-volume
               mountPath: /usr/local/structurizr/ldap.xml
               subPath: ldap.xml
+          {{- end }}
             - name: log4j2-volume
               mountPath: /usr/local/structurizr/log4j2.properties
               subPath: log4j2.properties
@@ -91,9 +93,11 @@ spec:
         - name: saml-idp-metadata-volume
           configMap:
             name: {{ include "structurizr.fullname" . }}-saml-idp-metadata
+      {{- if .Values.ldap.enabled }}
         - name: ldap-volume
           configMap:
             name: {{ include "structurizr.fullname" . }}-ldap
+      {{- end }}
         - name: log4j2-volume
           configMap:
             name: {{ include "structurizr.fullname" . }}-log4j2
