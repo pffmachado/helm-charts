@@ -2,9 +2,9 @@ apiVersion: v1
 entries:
   cdash:
   - apiVersion: v2
-    created: "2026-01-16T17:39:10.895671826Z"
+    created: "2026-01-19T10:29:24.919134607Z"
     description: A Helm Chart for CDash
-    digest: b53a3d759e3445f99dce0eee0e47b660adc8f44d4c8f1225233dfae77b4c11d5
+    digest: dd84f678b2bfabffa1b46502bd054ce4d58d04bd725f8e66630cad254b4e113f
     home: https://www.cdash.org
     icon: https://www.cdash.org/wp-content/uploads/2019/05/slider-cdash.png
     keywords:
@@ -55,9 +55,9 @@ entries:
   flexlm:
   - apiVersion: v2
     appVersion: 1.16.0
-    created: "2026-01-16T17:39:11.102295178Z"
+    created: "2026-01-19T10:29:25.086776712Z"
     description: A Helm chart for FlexLM
-    digest: 2c5054b5a221f8a139ef573ad6ae9f72cdfaf67cf9fd688754e3f8d79017ac5e
+    digest: d648d18395ec83aaed926923d1b7f98257b30089817af20cd8c046f7cb2b2c50
     name: flexlm
     type: application
     urls:
@@ -215,6 +215,25 @@ entries:
     version: 0.1.0
   structurizr:
   - apiVersion: v2
+    appVersion: 2026.01.19
+    created: "2026-01-19T10:29:25.259122356Z"
+    description: The Structurizr Helm chart deploys Structurizr On premise flavor.
+      Structurizr is a web-based rendering tool designed to help software development
+      teams create software architecture diagrams and documentation.
+    digest: 23f08067324d4436be8585eecc4b6ef0d58a087748794b0ed7b51d2c7454048e
+    icon: https://avatars.githubusercontent.com/u/7525795?s=200&v=4
+    keywords:
+    - structurizr
+    - diagrams
+    - kubernetes
+    name: structurizr
+    sources:
+    - https://structurizr.com/help/on-premises
+    type: application
+    urls:
+    - https://github.com/pffmachado/helm-charts/releases/download/structurizr-0.5.1/structurizr-0.5.1.tgz
+    version: 0.5.1
+  - apiVersion: v2
     appVersion: 2025.11.09
     created: "2026-01-16T17:39:11.288387771Z"
     description: The Structurizr Helm chart deploys Structurizr On premise flavor.
@@ -233,4 +252,4 @@ entries:
     urls:
     - https://github.com/pffmachado/helm-charts/releases/download/structurizr-0.5.0/structurizr-0.5.0.tgz
     version: 0.5.0
-generated: "2026-01-16T17:39:11.286719655Z"
+generated: "2026-01-19T10:29:25.257762413Z"
