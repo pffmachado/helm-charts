@@ -2,9 +2,9 @@ apiVersion: v1
 entries:
   cdash:
   - apiVersion: v2
-    created: "2026-01-19T10:57:37.464677175Z"
+    created: "2026-01-19T14:30:08.065776481Z"
     description: A Helm Chart for CDash
-    digest: e329f1fc33521f806bfe96692a369036757a6eb29bff5beade849163e384d5b8
+    digest: e64381b74d865a6bcfcce2da9370ad0be411ba335bb28437002c7d4c3eb14be0
     home: https://www.cdash.org
     icon: https://www.cdash.org/wp-content/uploads/2019/05/slider-cdash.png
     keywords:
@@ -55,9 +55,9 @@ entries:
   flexlm:
   - apiVersion: v2
     appVersion: 1.16.0
-    created: "2026-01-19T10:57:37.654921317Z"
+    created: "2026-01-19T14:30:08.279696293Z"
     description: A Helm chart for FlexLM
-    digest: 17ffbe7247d30da88344cbd8c314d2beacc83bdcf0abb9becf8d8e376a30c1da
+    digest: a11918299460cf6ad84921b36b1513185eb6b94817a105e9d57077c73741f51b
     name: flexlm
     type: application
     urls:
@@ -216,6 +216,25 @@ entries:
   structurizr:
   - apiVersion: v2
     appVersion: 2025.11.09
+    created: "2026-01-19T14:30:08.489166748Z"
+    description: The Structurizr Helm chart deploys Structurizr On premise flavor.
+      Structurizr is a web-based rendering tool designed to help software development
+      teams create software architecture diagrams and documentation.
+    digest: 4711669333296d86572e832e9d86c050371f5da01c5fa0972a8959dfb2f79f22
+    icon: https://avatars.githubusercontent.com/u/7525795?s=200&v=4
+    keywords:
+    - structurizr
+    - diagrams
+    - kubernetes
+    name: structurizr
+    sources:
+    - https://structurizr.com/help/on-premises
+    type: application
+    urls:
+    - https://github.com/pffmachado/helm-charts/releases/download/structurizr-0.5.2/structurizr-0.5.2.tgz
+    version: 0.5.2
+  - apiVersion: v2
+    appVersion: 2025.11.09
     created: "2026-01-19T10:57:37.831261654Z"
     description: The Structurizr Helm chart deploys Structurizr On premise flavor.
       Structurizr is a web-based rendering tool designed to help software development
@@ -252,4 +271,4 @@ entries:
     urls:
     - https://github.com/pffmachado/helm-charts/releases/download/structurizr-0.5.0/structurizr-0.5.0.tgz
     version: 0.5.0
-generated: "2026-01-19T10:57:37.830237669Z"
+generated: "2026-01-19T14:30:08.487899837Z"
