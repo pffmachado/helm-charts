@@ -1074,6 +1074,26 @@ entries:
     urls:
     - https://github.com/pffmachado/helm-charts/releases/download/flexlm-0.1.0/flexlm-0.1.0.tgz
     version: 0.1.0
+  gitea-mirror:
+  - apiVersion: v2
+    appVersion: 3.7.2
+    created: "2026-01-28T15:45:44.555731015Z"
+    description: Kubernetes helm chart for gitea-mirror
+    digest: ade98526ab3d8e4977ea96f1943e902c4cc4c52aa164bd89d21552e79e6f55b3
+    icon: https://github.com/RayLabsHQ/gitea-mirror/blob/main/.github/assets/logo.png
+    keywords:
+    - git
+    - gitea
+    maintainers:
+    - email: pffmachado@gmail.com
+      name: Paulo Machado
+    name: gitea-mirror
+    sources:
+    - https://github.com/RayLabsHQ/gitea-mirror
+    type: application
+    urls:
+    - https://github.com/pffmachado/helm-charts/releases/download/gitea-mirror-0.0.1/gitea-mirror-0.0.1.tgz
+    version: 0.0.1
   structurizr:
   - apiVersion: v2
     appVersion: 2025.11.09
@@ -1132,4 +1152,4 @@ entries:
     urls:
     - https://github.com/pffmachado/helm-charts/releases/download/structurizr-0.5.0/structurizr-0.5.0.tgz
     version: 0.5.0
-generated: "2026-01-19T16:37:54.754357689Z"
+generated: "2026-01-28T15:45:44.555917073Z"
